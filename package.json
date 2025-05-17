@@ -1,0 +1,81 @@
+{
+  "name": "@hnw/date-tibetan",
+  "version": "1.0.1",
+  "description": "Tibetan Calendar",
+  "keywords": [
+    "calendar",
+    "conversion",
+    "gregorian",
+    "tibetan",
+    "phugpa",
+    "mongolian",
+    "bhutanese"
+  ],
+  "homepage": "https://github.com/hnw/date-tibetan",
+  "bugs": {
+    "url": "https://github.com/hnw/date-tibetan/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hnw/date-tibetan.git"
+  },
+  "license": "MIT",
+  "author": "hnw <for-github@hnw.jp>",
+  "maintainers": [
+    "hnw <for-github@hnw.jp>"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.cjs",
+  "module": "./src/index.js",
+  "types": "./types",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "all": "npm-run-all clean build test",
+    "build": "rollup -c",
+    "ci": "npm test",
+    "clean": "rimraf lib coverage .nyc_output",
+    "clean:all": "npm-run-all clean clean:node_modules",
+    "clean:node_modules": "rimraf node_modules",
+    "coverage": "c8 -r text -r html npm run test:ci",
+    "lint": "eslint --ext=.js .",
+    "prepublishOnly": "npm run all",
+    "readme": "markedpp --githubid -i README.md -o README.md",
+    "test": "npm-run-all test:ci",
+    "test:ci": "mocha",
+    "test:ts": "dtslint types"
+  },
+  "mocha": {
+    "checkLeaks": true,
+    "colors": true
+  },
+  "dependencies": {
+    "astronomia": "^4.1.0"
+  },
+  "devDependencies": {
+    "c8": "^7.11.3",
+    "dtslint": "^4.2.1",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "mocha": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.74.1",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
